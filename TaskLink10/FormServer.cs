@@ -16,11 +16,34 @@ namespace TaskLink10Server
         {
             InitializeComponent();
             GetDateTime();
+            RefreshLocalIP();
         }
 
         public void buttonSPSet_Click(object sender, EventArgs e)
         {
+        SPInput:
+            buttonSPSet.Enabled = false;
 
+            string Input = InputBox(
+                "Enter new Session Password", "Session Password");
+            if (Input.Length > 0)
+            {
+                string hash = GetHashSha256(Input);
+
+                SessionPassword = hash;
+                LogBox("Set new Session Password. SHA-256 Hash:\n" +
+                        SessionPassword);
+
+                buttonSPSet.Text = "Set new Session Password";
+                
+            }
+            else
+            {
+                if (ConfirmationBox("Please enter a Password", "Invalid Input"))
+                    goto SPInput;
+            }
+            buttonSPSet.Enabled = true;
+            EnableButtons();\
         }
 
         public void buttonSPSave_Click(object sender, EventArgs e)

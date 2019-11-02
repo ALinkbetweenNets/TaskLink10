@@ -9,13 +9,13 @@ namespace TaskLink10Server
 {
     public partial class FormServer : Form
     {
-
         /// <summary>
         /// Logs the specified MSG to Console and GUI textBox
         /// </summary>
         /// <param name="msg">Log message</param>
         public void Log(string msg)
         {
+            msg = StringCheck(msg);
             Console.WriteLine(msg);
             LogTextBox(msg);
         }
@@ -37,18 +37,19 @@ namespace TaskLink10Server
         /// <param name="msg">Message to write into Log</param>
         public static void LogS(string msg)
         {
+            msg = StringCheck(msg);
             Console.WriteLine(msg);
         }
 
-        /*/// <summary>
-        /// Version of LogS. Returns logging message for return in functions
+        /// <summary>
+        /// Return Version of LogS. Returns logging message for return in functions
         /// </summary>
         /// <param name="msg">String to Log and return</param>
         public static string LogR(string msg)
         {
             Console.WriteLine(msg);
             return msg;
-        }*/
+        }
 
         /// <summary>
         /// Writes Message to Log TextBox
@@ -88,8 +89,11 @@ namespace TaskLink10Server
         {
             try
             {
-                string Input = Microsoft.VisualBasic.Interaction.InputBox(text,
-                           title, EnteredText, 0, 0);
+            Input:
+                string Input = StringCheck(Microsoft.VisualBasic.Interaction.InputBox(text,
+                           title, EnteredText, 0, 0));
+                if (Input.Length == 0)
+                    goto Input;
 
                 LogS($"Input Box: { title} : {text} -> {Input}");
                 return Input;

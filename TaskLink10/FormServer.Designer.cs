@@ -57,7 +57,7 @@
             this.buttonSPSet.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonSPSet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tableLayoutPanel1.SetColumnSpan(this.buttonSPSet, 2);
-            this.buttonSPSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSPSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonSPSet.Location = new System.Drawing.Point(3, 3);
             this.buttonSPSet.Name = "buttonSPSet";
             this.buttonSPSet.Size = new System.Drawing.Size(232, 30);
@@ -110,7 +110,7 @@
             this.buttonIPLoad.AutoSize = true;
             this.buttonIPLoad.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonIPLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonIPLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIPLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonIPLoad.Location = new System.Drawing.Point(122, 448);
             this.buttonIPLoad.Name = "buttonIPLoad";
             this.buttonIPLoad.Size = new System.Drawing.Size(113, 31);
@@ -127,7 +127,7 @@
             this.buttonIPClear.AutoSize = true;
             this.buttonIPClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonIPClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonIPClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIPClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonIPClear.Location = new System.Drawing.Point(122, 412);
             this.buttonIPClear.Name = "buttonIPClear";
             this.buttonIPClear.Size = new System.Drawing.Size(113, 30);
@@ -145,7 +145,7 @@
             this.buttonIPAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonIPAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tableLayoutPanel1.SetColumnSpan(this.buttonIPAdd, 2);
-            this.buttonIPAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIPAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonIPAdd.Location = new System.Drawing.Point(3, 39);
             this.buttonIPAdd.Name = "buttonIPAdd";
             this.buttonIPAdd.Size = new System.Drawing.Size(232, 30);
@@ -189,7 +189,7 @@
             this.buttonIPRemove.AutoSize = true;
             this.buttonIPRemove.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonIPRemove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonIPRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIPRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonIPRemove.Location = new System.Drawing.Point(3, 412);
             this.buttonIPRemove.Name = "buttonIPRemove";
             this.buttonIPRemove.Size = new System.Drawing.Size(113, 30);
@@ -206,7 +206,7 @@
             this.buttonIPSave.AutoSize = true;
             this.buttonIPSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonIPSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonIPSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIPSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonIPSave.Location = new System.Drawing.Point(3, 448);
             this.buttonIPSave.Name = "buttonIPSave";
             this.buttonIPSave.Size = new System.Drawing.Size(113, 31);
@@ -234,7 +234,7 @@
             this.buttonConnect.AutoSize = true;
             this.buttonConnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonConnect.Location = new System.Drawing.Point(241, 39);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(232, 30);
@@ -251,7 +251,7 @@
             this.buttonSPSave.AutoSize = true;
             this.buttonSPSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonSPSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonSPSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSPSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonSPSave.Location = new System.Drawing.Point(241, 3);
             this.buttonSPSave.Name = "buttonSPSave";
             this.buttonSPSave.Size = new System.Drawing.Size(232, 30);
@@ -268,7 +268,7 @@
             this.buttonProcKill.AutoSize = true;
             this.buttonProcKill.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonProcKill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonProcKill.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProcKill.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonProcKill.Location = new System.Drawing.Point(241, 412);
             this.buttonProcKill.Name = "buttonProcKill";
             this.buttonProcKill.Size = new System.Drawing.Size(232, 30);
@@ -285,7 +285,7 @@
             this.buttonLogClear.AutoSize = true;
             this.buttonLogClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonLogClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonLogClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonLogClear.Location = new System.Drawing.Point(479, 412);
             this.buttonLogClear.Name = "buttonLogClear";
             this.buttonLogClear.Size = new System.Drawing.Size(314, 30);
@@ -302,7 +302,7 @@
             this.buttonLocalIPRefresh.AutoSize = true;
             this.buttonLocalIPRefresh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonLocalIPRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonLocalIPRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLocalIPRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonLocalIPRefresh.Location = new System.Drawing.Point(479, 3);
             this.buttonLocalIPRefresh.Name = "buttonLocalIPRefresh";
             this.buttonLocalIPRefresh.Size = new System.Drawing.Size(314, 30);
@@ -318,7 +318,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelLocalIP.AutoEllipsis = true;
             this.labelLocalIP.AutoSize = true;
-            this.labelLocalIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLocalIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLocalIP.Location = new System.Drawing.Point(479, 36);
             this.labelLocalIP.Name = "labelLocalIP";
             this.labelLocalIP.Size = new System.Drawing.Size(314, 36);

@@ -69,6 +69,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Files\Buttons.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Files\Collector.cs">
       <SubType>Form</SubType>
     </Compile>
