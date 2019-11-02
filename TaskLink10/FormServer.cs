@@ -16,5 +16,60 @@ namespace TaskLink10
         {
             InitializeComponent();
         }
+
+        private void buttonSPSet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSPSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonIPAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonConnect_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonLocalIPRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonIPRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonIPClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonIPSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonIPLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonProcKill_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonLogClear_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
