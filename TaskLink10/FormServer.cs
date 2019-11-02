@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,7 @@ namespace TaskLink10Server
             GetDateTime();
             RefreshLocalIP();
             IPLoad(false);
+            ButtonDisable();
         }
 
         public void buttonSPSet_Click(object sender, EventArgs e)
@@ -54,6 +56,7 @@ namespace TaskLink10Server
 
         public void buttonIPAdd_Click(object sender, EventArgs e)
         {
+        IPAdd:
             string enteredAddress = StringCheck(InputBox(
                 "Enter new IPv4 Address of a Client Computer (eg. 192.168.1.5)",
                 "New Client IP"));
@@ -61,22 +64,25 @@ namespace TaskLink10Server
             {
                 if (IPFilter(enteredAddress))
                 {
-                    listBoxClientIPs.Items.Add(enteredAddress);
-                    buttonSave.Enabled = true;
-                    buttonRemove.Enabled = true;
-                    buttonClear.Enabled = true;
+                    listBoxIP.Items.Add(enteredAddress);
                 }
-                else LogMsgBox("Invalid IPv4 Formatting");
+                else if (ConfirmationBox("Invalid IPv4 Formatting. Retry?", "Invalid IPv4 Format"))
+                    goto IPAdd;
             }
             else
             {
-
+                LogBox("You have to enter an IP Address in the IPv4 Format");
             }
         }
 
-        public void buttonConnect_Click(object sender, EventArgs e)
+        public async void buttonConnect_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                await ConnectAsync(listBoxIP.SelectedItem.ToString());
+            }
+            catch (Exception ex)
+            { Log(ex); }
         }
 
         public void buttonLocalIPRefresh_Click(object sender, EventArgs e)
@@ -86,17 +92,26 @@ namespace TaskLink10Server
 
         public void buttonIPRemove_Click(object sender, EventArgs e)
         {
+            try
+            {
+                listBoxIP.Items.Remove(listBoxIP.SelectedItem);
 
+            }
+            catch (Exception ex)
+            {
+                Log(ex);
+            }
         }
 
         public void buttonIPClear_Click(object sender, EventArgs e)
         {
-
+            if (ConfirmationBox("Are you sure you want to remove all IP Addresses from the List?", "Deleting all IPs"))
+                listBoxIP.Items.Clear();
         }
 
         public void buttonIPSave_Click(object sender, EventArgs e)
         {
-
+            IPSave();
         }
 
         public void buttonIPLoad_Click(object sender, EventArgs e)
@@ -104,9 +119,14 @@ namespace TaskLink10Server
             IPLoad();
         }
 
-        public void buttonProcKill_Click(object sender, EventArgs e)
+        public async void buttonProcKill_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                await ConnectAsync(listBoxIP.SelectedItem.ToString(),"KILL",listBoxProc.SelectedItem.ToString());
+            }
+            catch (Exception ex)
+            { Log(ex); }
         }
 
         public void buttonLogClear_Click(object sender, EventArgs e)
