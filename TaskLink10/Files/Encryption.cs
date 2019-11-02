@@ -39,15 +39,15 @@ namespace TaskLink10Server
         /// <param name="plainText">string to Encrypt</param>
         /// <param name="passPhrase">Passphrase to use in Combination with initVector</param>
         /// <returns>Encrypted string</returns>
-        public string EncryptString(string plainText, string passPhrase)
+        public string EncryptString(string plainText)
         {
             Log("Encrypting: " + plainText);
-            Log("With Password: " + passPhrase);
+            Log("With Password: " + SessionPassword);
             Log("Using initVector: " + initVector);
 
             byte[] initVectorBytes = utf8.GetBytes(initVector);
             byte[] plainTextBytes = utf8.GetBytes(plainText);
-            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(SessionPassword, null);
             byte[] keyBytes = password.GetBytes(keysize / 8);
             using (AesCryptoServiceProvider symmetricKey = new AesCryptoServiceProvider
             {
@@ -74,13 +74,13 @@ namespace TaskLink10Server
         /// <param name="cipherText">string to Decrypt</param>
         /// <param name="passPhrase">Passphrase to use in Combination with initVector</param>
         /// <returns>Decrypted string</returns>
-        public string DecryptString(string cipherText, string passPhrase)
+        public string DecryptString(string cipherText)
         {
             Log("Decrypting: " + cipherText);
-            Log("With Password: " + passPhrase);
+            Log("With Password: " + SessionPassword);
             byte[] initVectorBytes = utf8.GetBytes(initVector);
             byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
-            PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
+            PasswordDeriveBytes password = new PasswordDeriveBytes(SessionPassword, null);
             byte[] keyBytes = password.GetBytes(keysize / 8);
             using (AesCryptoServiceProvider symmetricKey = new AesCryptoServiceProvider
             {

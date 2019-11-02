@@ -77,7 +77,6 @@ namespace TaskLink10Server
                     }
                     LogS("Transmitter Ready");
 
-
                     Write("LINK", false);
                     LogS("Started Transmission");
                     if (await Read(false) == "LINK")

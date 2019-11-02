@@ -37,13 +37,14 @@ namespace TaskLink10Server
         /// <param name="byteLength">Length of message</param>
         /// <param name="cleartext">Wether to not decrypt message</param>
         /// <returns>Built string</returns>
-        private string GetString(byte[] bytesToConvert, int byteLength, bool cleartext = false)
+        private string GetString(byte[] bytesToConvert, int byteLength, bool encrypted = false)
         {
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < byteLength; i++)
                 stringBuilder.Append(Convert.ToChar(bytesToConvert[i]).ToString());
-            Console.WriteLine("Received: " + stringBuilder);
-            return cleartext ? StringCheck(stringBuilder.ToString()) : DecryptString(StringCheck(stringBuilder.ToString()));
+            string finishedString = StringCheck(stringBuilder.ToString());
+            Console.WriteLine("Received: " + finishedString);
+            return encrypted ? DecryptString(finishedString) : finishedString;
         }
 
         /// <summary>
@@ -52,8 +53,10 @@ namespace TaskLink10Server
         /// <param name="stringToConvert"></param>
         /// <param name="cleartext">Wether to not encrypt message</param>
         /// <returns>Converted Bytes</returns>
-        private byte[] GetBytes(string stringToConvert, bool cleartext = false)
-            => cleartext ? UTF8Encoding.GetBytes(StringCheck(stringToConvert)) : UTF8Encoding.GetBytes(EncryptString(StringCheck(stringToConvert)));
-
+        private byte[] GetBytes(string stringToConvert, bool encrypt = false)
+        {
+            stringToConvert = StringCheck(stringToConvert);
+            return encrypt ? utf8.GetBytes(EncryptString(stringToConvert)) : utf8.GetBytes(stringToConvert);
+        }
     }
 }
