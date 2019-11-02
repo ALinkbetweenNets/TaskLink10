@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TaskLink10
+namespace TaskLink10Client
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace TaskLink10
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormServer());
+            Application.Run(new FormClient());
         }
     }
 }

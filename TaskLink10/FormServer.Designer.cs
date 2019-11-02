@@ -1,6 +1,6 @@
 ﻿namespace TaskLink10
 {
-    partial class Form1
+    partial class FormServer
     {
         /// <summary>
         /// Erforderliche Designervariable.
