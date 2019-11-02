@@ -69,6 +69,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Files\Collector.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Files\Connect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +79,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Files\Files.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\IP.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Files\Logging.cs">

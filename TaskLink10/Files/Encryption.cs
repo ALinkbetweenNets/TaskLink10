@@ -11,7 +11,6 @@ namespace TaskLink10Server
 {
     public partial class FormServer : Form
     {
-
         /// <summary>
         /// Session password used for Communication. Should never be clear text (-> use SHA-256).
         /// Must be equal on all devices
@@ -23,7 +22,7 @@ namespace TaskLink10Server
         /// Default 256 -> IV = 32 bytes
         /// Using 16 character string -> 32 bytes when converted to a byte array
         /// </summary>
-        private static string initVector = "pemgail9uzpgzl88";
+        private static readonly string initVector = "pemgail9uzpgzl88";
 
         /// <summary>
         /// used to determine the keysize of the encryption algorithm
@@ -31,7 +30,7 @@ namespace TaskLink10Server
         /// </summary>
         private const ushort keysize = 256;
 
-        UTF8Encoding utf8 = new UTF8Encoding();
+        public UTF8Encoding utf8 = new UTF8Encoding();
 
         /// <summary>
         /// Encrypts given string with AES using passphrase and initVector

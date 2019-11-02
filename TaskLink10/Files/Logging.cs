@@ -14,7 +14,7 @@ namespace TaskLink10Server
         /// Logs the specified MSG to Console and GUI textBox
         /// </summary>
         /// <param name="msg">Log message</param>
-        public static void Log(string msg)
+        public void Log(string msg)
         {
             Console.WriteLine(msg);
             LogTextBox(msg);
@@ -54,10 +54,9 @@ namespace TaskLink10Server
         /// Writes Message to Log TextBox
         /// </summary>
         /// <param name="msg"></param>
-        public static void LogTextBox(string msg)
+        public void LogTextBox(string msg)
         {
-            //textBoxLog.AppendText(msg + "\r\n");
-            
+            textBoxLog.AppendText(msg + "\r\n");
         }
 
         /// <summary>
@@ -68,7 +67,7 @@ namespace TaskLink10Server
         {
             try
             {
-                Log($"MsgBox ({msg})");
+                LogS($"MsgBox ({msg})");
                 Microsoft.VisualBasic.Interaction.MsgBox(msg,
                         Microsoft.VisualBasic.MsgBoxStyle.OkOnly);
             }
@@ -130,7 +129,7 @@ namespace TaskLink10Server
             catch (Exception ex)
             {
                 Log(ex);
-                Log("Error while trying to show Confirmation Box");
+                LogS("Error while trying to show Confirmation Box");
                 return false;
             }
         }

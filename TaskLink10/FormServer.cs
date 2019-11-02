@@ -15,6 +15,7 @@ namespace TaskLink10Server
         public FormServer()
         {
             InitializeComponent();
+            GetDateTime();
         }
 
         public void buttonSPSet_Click(object sender, EventArgs e)

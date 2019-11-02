@@ -28,111 +28,114 @@ namespace TaskLink10Server
             if (SessionPassword.Length > 0)
                 try
                 {
-                    TcpClient tcpClient = new TcpClient();
-                    LogS("Connecting...");
-                    await tcpClient.ConnectAsync(address, port);
-                    LogS("Connected");
-                    NetworkStream stream = tcpClient.GetStream();
-                    LogS("Opened Stream");
-                    //byte[] ByteResponse = new byte[100];
-
-
-                    /* Server
-                     *      Client
-                     * LINK  4
-                     * 4    LINK
-                     * 
-                     * SP[0-4]  5 -> ==
-                     * 5    SP[5-9] -> ==
-                     * type     10
-                     * 5        Resp.Length
-                     * Resp.Length  Response
-                     */
-
-                    async void Write(string msg, bool encrypt = true)
+                    using (TcpClient tcpClient = new TcpClient())
                     {
+                        LogS("Connecting...");
+                        await tcpClient.ConnectAsync(address, port);
+                        LogS("Connected");
+                        NetworkStream stream = tcpClient.GetStream();
+                        LogS("Opened Stream");
+                        //byte[] ByteResponse = new byte[100];
 
-                        byte[] bytes = GetBytes(msg);
-                        await stream.WriteAsync(GetBytes(bytes.Length.ToString()), 0, bytes.Length);
-                        await stream.WriteAsync(bytes, 0, bytes.Length);
-                        LogS($"Sent{msg}");
-                    }
-                    async Task<string> Read(bool encrypted = true)
-                    {
-                        byte[] Response = new byte[3];
-                        int length = await stream.ReadAsync(Response, 0, 3);
 
-                        int ResponseLength = 200;
-                        try
+                        /* Server
+                         *      Client
+                         * LINK  4
+                         * 4    LINK
+                         * 
+                         * SP[0-4]  5 -> ==
+                         * 5    SP[5-9] -> ==
+                         * type     10
+                         * 5        Resp.Length
+                         * Resp.Length  Response
+                         */
+
+                        async void Write(string msg, bool encrypt = true)
                         {
-                            ResponseLength = Convert.ToInt32(GetString(Response, length));
+                            byte[] bytes = GetBytes(msg,encrypt);
+                            await stream.WriteAsync(GetBytes(bytes.Length.ToString()), 0, bytes.Length);
+                            await stream.WriteAsync(bytes, 0, bytes.Length);
+                            LogS($"Sent{msg}");
                         }
-                        catch (Exception)
-                        { }
-                        byte[] ByteResponse = new byte[ResponseLength];
-                        length = await stream.ReadAsync(ByteResponse, 0, ResponseLength);
-                        string ResponseString = GetString(ByteResponse, length);
-                        LogS($"Received {ResponseString}");
-                        return ResponseString;
-                    }
-                    LogS("Transmitter Ready");
+                        async Task<string> Read(bool encrypted = true)
+                        {
+                            byte[] Response = new byte[3];
+                            int length = await stream.ReadAsync(Response, 0, 3);
 
-                    Write("LINK", false);
-                    LogS("Started Transmission");
-                    if (await Read(false) == "LINK")
-                    {
-                        LogS("Correct Protocol");
-                        Write(SessionPassword.Substring(0, 4));
-                        if (await Read() == SessionPassword.Substring(5, 5))
-                        {//Check if Received is first 5 chars of Session Password
-                            LogS("Correct Password");
-                            Write(type);
-                            if (type == "KILL")
+                            int ResponseLength = 200;
+                            try
                             {
-                                /*string s;
-                                if (content.Length >= 10)
-                                    s = GetBytes(content).Length.ToString();
-                                else
-                                    s = 0 + GetBytes(content).Length.ToString();
-
-                                await stream.WriteAsync(GetBytes(s), 0,
-                                        GetBytes(GetBytes(content).Length.ToString()).Length);
-                                */
-
-                                Write(content);
-                                if (await Read() == "S")
-                                {
-                                    LogBox($"Successfully Stopped Process: {content}");
-                                    return "S";
-                                }
-                                else
-                                {
-                                    LogBox($"Could not Kill Process: {content}");
-                                    return "F";
-                                }
+                                ResponseLength = Convert.ToInt32(GetString(Response, length));
                             }
-                            else if (type == "REQUEST")
-                            {
-                                /*byte[] ByteResponse3 = new byte[4];
-                                k = await stream.ReadAsync(ByteResponse3, 0, 4);
-                                int ResponseLength = Convert.ToInt32(GetString(ByteResponse3, k));
-                                LogS(GetString(ByteResponse3, k));
-
-                                byte[] ByteResponse4 = new byte[ResponseLength];
-                                k = await stream.ReadAsync(ByteResponse4, 0, ResponseLength);
-                                string Response = GetString(ByteResponse4, k);
-                                */
-                                return await Read();
-                            }
-                            //await stream.WriteAsync(GetBytes("END"), 0, GetBytes("END").Length);
+                            catch (Exception)
+                            { }
+                            byte[] ByteResponse = new byte[ResponseLength];
+                            length = await stream.ReadAsync(ByteResponse, 0, ResponseLength);
+                            string ResponseString = GetString(ByteResponse, length,encrypted);
+                            LogS($"Received {ResponseString}");
+                            return ResponseString;
                         }
-                        else LogS("INCORRECT PASSWORD");
-                    }
-                    else LogS("INCORRECT PROTOCOL");
+                        LogS("Transmitter Ready");
 
-                    stream.Close();
-                    //Handlemsg(Response.ToString());
-                    tcpClient.Close();
+                        Write("LINK", false);
+                        LogS("Started Transmission");
+                        if (await Read(false) == "LINK")
+                        {
+                            LogS("Correct Protocol");
+                            Write(SessionPassword.Substring(0, 4));
+                            if (await Read() == SessionPassword.Substring(5, 5))
+                            {//Check if Received is first 5 chars of Session Password
+                                LogS("Correct Password");
+                                Write(type);
+                                if (type == "KILL")
+                                {
+                                    /*string s;
+                                    if (content.Length >= 10)
+                                        s = GetBytes(content).Length.ToString();
+                                    else
+                                        s = 0 + GetBytes(content).Length.ToString();
+
+                                    await stream.WriteAsync(GetBytes(s), 0,
+                                            GetBytes(GetBytes(content).Length.ToString()).Length);
+                                    */
+
+                                    Write(content);
+                                    if (await Read() == "S")
+                                    {
+                                        LogBox($"Successfully Stopped Process: {content}");
+                                        return "S";
+                                    }
+                                    else
+                                    {
+                                        LogBox($"Could not Kill Process: {content}");
+                                        return "F";
+                                    }
+                                }
+                                else if (type == "REQUEST")
+                                {
+                                    /*byte[] ByteResponse3 = new byte[4];
+                                    k = await stream.ReadAsync(ByteResponse3, 0, 4);
+                                    int ResponseLength = Convert.ToInt32(GetString(ByteResponse3, k));
+                                    LogS(GetString(ByteResponse3, k));
+
+                                    byte[] ByteResponse4 = new byte[ResponseLength];
+                                    k = await stream.ReadAsync(ByteResponse4, 0, ResponseLength);
+                                    string Response = GetString(ByteResponse4, k);
+                                    */
+                                    return await Read();
+                                }
+                                //await stream.WriteAsync(GetBytes("END"), 0, GetBytes("END").Length);
+                            }
+                            else LogS("INCORRECT PASSWORD");
+                        }
+                        else LogS("INCORRECT PROTOCOL");
+
+                        stream.Close();
+                        stream.Dispose();
+                        //Handlemsg(Response.ToString());
+                        tcpClient.Close();
+                        tcpClient.Dispose();
+                    }
                     LogS("Connection Closed");
                     return "";
                 }
