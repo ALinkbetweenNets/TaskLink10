@@ -1,4 +1,4 @@
-﻿namespace TaskLink10
+﻿namespace TaskLink10Server
 {
     partial class FormServer
     {
@@ -33,14 +33,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonIPLoad = new System.Windows.Forms.Button();
             this.buttonIPClear = new System.Windows.Forms.Button();
-            this.buttonSPSave = new System.Windows.Forms.Button();
             this.buttonIPAdd = new System.Windows.Forms.Button();
-            this.buttonConnect = new System.Windows.Forms.Button();
-            this.listBoxIP = new System.Windows.Forms.ListBox();
             this.listBoxProc = new System.Windows.Forms.ListBox();
-            this.buttonIPSave = new System.Windows.Forms.Button();
+            this.listBoxIP = new System.Windows.Forms.ListBox();
             this.buttonIPRemove = new System.Windows.Forms.Button();
+            this.buttonIPSave = new System.Windows.Forms.Button();
             this.textBoxLog = new System.Windows.Forms.TextBox();
+            this.buttonConnect = new System.Windows.Forms.Button();
+            this.buttonSPSave = new System.Windows.Forms.Button();
             this.buttonProcKill = new System.Windows.Forms.Button();
             this.buttonLogClear = new System.Windows.Forms.Button();
             this.buttonLocalIPRefresh = new System.Windows.Forms.Button();
@@ -136,23 +136,6 @@
             this.buttonIPClear.UseVisualStyleBackColor = true;
             this.buttonIPClear.Click += new System.EventHandler(this.buttonIPClear_Click);
             // 
-            // buttonSPSave
-            // 
-            this.buttonSPSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSPSave.AutoSize = true;
-            this.buttonSPSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSPSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonSPSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSPSave.Location = new System.Drawing.Point(241, 3);
-            this.buttonSPSave.Name = "buttonSPSave";
-            this.buttonSPSave.Size = new System.Drawing.Size(232, 30);
-            this.buttonSPSave.TabIndex = 2;
-            this.buttonSPSave.Text = "Save Session Password";
-            this.buttonSPSave.UseVisualStyleBackColor = true;
-            this.buttonSPSave.Click += new System.EventHandler(this.buttonSPSave_Click);
-            // 
             // buttonIPAdd
             // 
             this.buttonIPAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -171,22 +154,18 @@
             this.buttonIPAdd.UseVisualStyleBackColor = true;
             this.buttonIPAdd.Click += new System.EventHandler(this.buttonIPAdd_Click);
             // 
-            // buttonConnect
+            // listBoxProc
             // 
-            this.buttonConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listBoxProc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonConnect.AutoSize = true;
-            this.buttonConnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConnect.Location = new System.Drawing.Point(241, 39);
-            this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(232, 30);
-            this.buttonConnect.TabIndex = 4;
-            this.buttonConnect.Text = "Connect";
-            this.buttonConnect.UseVisualStyleBackColor = true;
-            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
+            this.listBoxProc.FormattingEnabled = true;
+            this.listBoxProc.Location = new System.Drawing.Point(241, 75);
+            this.listBoxProc.Name = "listBoxProc";
+            this.listBoxProc.ScrollAlwaysVisible = true;
+            this.listBoxProc.Size = new System.Drawing.Size(232, 329);
+            this.listBoxProc.Sorted = true;
+            this.listBoxProc.TabIndex = 10;
             // 
             // listBoxIP
             // 
@@ -201,36 +180,6 @@
             this.listBoxIP.Size = new System.Drawing.Size(232, 329);
             this.listBoxIP.Sorted = true;
             this.listBoxIP.TabIndex = 9;
-            // 
-            // listBoxProc
-            // 
-            this.listBoxProc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBoxProc.FormattingEnabled = true;
-            this.listBoxProc.Location = new System.Drawing.Point(241, 75);
-            this.listBoxProc.Name = "listBoxProc";
-            this.listBoxProc.ScrollAlwaysVisible = true;
-            this.listBoxProc.Size = new System.Drawing.Size(232, 329);
-            this.listBoxProc.Sorted = true;
-            this.listBoxProc.TabIndex = 10;
-            // 
-            // buttonIPSave
-            // 
-            this.buttonIPSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonIPSave.AutoSize = true;
-            this.buttonIPSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonIPSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonIPSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonIPSave.Location = new System.Drawing.Point(3, 448);
-            this.buttonIPSave.Name = "buttonIPSave";
-            this.buttonIPSave.Size = new System.Drawing.Size(113, 31);
-            this.buttonIPSave.TabIndex = 7;
-            this.buttonIPSave.Text = "Save IPs";
-            this.buttonIPSave.UseVisualStyleBackColor = true;
-            this.buttonIPSave.Click += new System.EventHandler(this.buttonIPSave_Click);
             // 
             // buttonIPRemove
             // 
@@ -249,6 +198,23 @@
             this.buttonIPRemove.UseVisualStyleBackColor = true;
             this.buttonIPRemove.Click += new System.EventHandler(this.buttonIPRemove_Click);
             // 
+            // buttonIPSave
+            // 
+            this.buttonIPSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonIPSave.AutoSize = true;
+            this.buttonIPSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonIPSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonIPSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIPSave.Location = new System.Drawing.Point(3, 448);
+            this.buttonIPSave.Name = "buttonIPSave";
+            this.buttonIPSave.Size = new System.Drawing.Size(113, 31);
+            this.buttonIPSave.TabIndex = 7;
+            this.buttonIPSave.Text = "Save IPs";
+            this.buttonIPSave.UseVisualStyleBackColor = true;
+            this.buttonIPSave.Click += new System.EventHandler(this.buttonIPSave_Click);
+            // 
             // textBoxLog
             // 
             this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -259,6 +225,40 @@
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxLog.Size = new System.Drawing.Size(314, 331);
             this.textBoxLog.TabIndex = 11;
+            // 
+            // buttonConnect
+            // 
+            this.buttonConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonConnect.AutoSize = true;
+            this.buttonConnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonConnect.Location = new System.Drawing.Point(241, 39);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(232, 30);
+            this.buttonConnect.TabIndex = 4;
+            this.buttonConnect.Text = "Connect";
+            this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
+            // 
+            // buttonSPSave
+            // 
+            this.buttonSPSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSPSave.AutoSize = true;
+            this.buttonSPSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonSPSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonSPSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSPSave.Location = new System.Drawing.Point(241, 3);
+            this.buttonSPSave.Name = "buttonSPSave";
+            this.buttonSPSave.Size = new System.Drawing.Size(232, 30);
+            this.buttonSPSave.TabIndex = 2;
+            this.buttonSPSave.Text = "Save Session Password";
+            this.buttonSPSave.UseVisualStyleBackColor = true;
+            this.buttonSPSave.Click += new System.EventHandler(this.buttonSPSave_Click);
             // 
             // buttonProcKill
             // 

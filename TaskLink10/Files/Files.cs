@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskLink10
+namespace TaskLink10Server
 {
     public partial class FormServer
     {
