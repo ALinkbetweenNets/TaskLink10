@@ -40,6 +40,16 @@ namespace TaskLink10Server
             Console.WriteLine(msg);
         }
 
+        /*/// <summary>
+        /// Version of LogS. Returns logging message for return in functions
+        /// </summary>
+        /// <param name="msg">String to Log and return</param>
+        public static string LogR(string msg)
+        {
+            Console.WriteLine(msg);
+            return msg;
+        }*/
+
         /// <summary>
         /// Writes Message to Log TextBox
         /// </summary>

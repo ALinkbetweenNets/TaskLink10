@@ -35,7 +35,7 @@ namespace TaskLink10Server
                     NetworkStream stream = tcpClient.GetStream();
                     LogS("Opened Stream");
                     //byte[] ByteResponse = new byte[100];
-                    
+
 
                     /* Server
                      *      Client
@@ -49,35 +49,42 @@ namespace TaskLink10Server
                      * Resp.Length  Response
                      */
 
-                    async void Write(string msg)
+                    async void Write(string msg, bool encrypt = true)
                     {
-                        
+
                         byte[] bytes = GetBytes(msg);
                         await stream.WriteAsync(GetBytes(bytes.Length.ToString()), 0, bytes.Length);
                         await stream.WriteAsync(bytes, 0, bytes.Length);
                         LogS($"Sent{msg}");
                     }
-                    async Task<string> Read()
+                    async Task<string> Read(bool encrypted = true)
                     {
                         byte[] Response = new byte[3];
                         int length = await stream.ReadAsync(Response, 0, 3);
-                        int ResponseLength = Convert.ToInt32(GetString(Response, length));
 
-                        byte[] ByteResponse4 = new byte[ResponseLength];
-                        length = await stream.ReadAsync(ByteResponse4, 0, ResponseLength);
-                        string ResponseString = GetString(ByteResponse4, length);
+                        int ResponseLength = 200;
+                        try
+                        {
+                            ResponseLength = Convert.ToInt32(GetString(Response, length));
+                        }
+                        catch (Exception)
+                        { }
+                        byte[] ByteResponse = new byte[ResponseLength];
+                        length = await stream.ReadAsync(ByteResponse, 0, ResponseLength);
+                        string ResponseString = GetString(ByteResponse, length);
                         LogS($"Received {ResponseString}");
                         return ResponseString;
                     }
                     LogS("Transmitter Ready");
 
 
-
-                    if (await Read() == "LINK")
+                    Write("LINK", false);
+                    LogS("Started Transmission");
+                    if (await Read(false) == "LINK")
                     {
                         LogS("Correct Protocol");
                         Write(SessionPassword.Substring(0, 4));
-                        if(await Read()== SessionPassword.Substring(5, 5))
+                        if (await Read() == SessionPassword.Substring(5, 5))
                         {//Check if Received is first 5 chars of Session Password
                             LogS("Correct Password");
                             Write(type);
@@ -134,14 +141,11 @@ namespace TaskLink10Server
                 {
                     Log(ex);
                     LogBox("Error In TCP Connection");
-                    //stream.Close();
-                    //Handlemsg(Response.ToString());
-                    //tcpClient.Close();
                     LogS("Connection Closed");
                     return "";
                 }
             else LogBox();
-            return "";
+            return string.Empty;
         }
     }
 }
