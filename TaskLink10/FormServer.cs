@@ -17,6 +17,7 @@ namespace TaskLink10Server
             InitializeComponent();
             GetDateTime();
             RefreshLocalIP();
+            IPLoad(false);
         }
 
         public void buttonSPSet_Click(object sender, EventArgs e)
@@ -35,7 +36,7 @@ namespace TaskLink10Server
                         SessionPassword);
 
                 buttonSPSet.Text = "Set new Session Password";
-                
+
             }
             else
             {
@@ -43,17 +44,34 @@ namespace TaskLink10Server
                     goto SPInput;
             }
             buttonSPSet.Enabled = true;
-            EnableButtons();\
+            EnableButtons();
         }
 
         public void buttonSPSave_Click(object sender, EventArgs e)
         {
-
+            SPSave();
         }
 
         public void buttonIPAdd_Click(object sender, EventArgs e)
         {
+            string enteredAddress = StringCheck(InputBox(
+                "Enter new IPv4 Address of a Client Computer (eg. 192.168.1.5)",
+                "New Client IP"));
+            if (enteredAddress.Length > 0)
+            {
+                if (IPFilter(enteredAddress))
+                {
+                    listBoxClientIPs.Items.Add(enteredAddress);
+                    buttonSave.Enabled = true;
+                    buttonRemove.Enabled = true;
+                    buttonClear.Enabled = true;
+                }
+                else LogMsgBox("Invalid IPv4 Formatting");
+            }
+            else
+            {
 
+            }
         }
 
         public void buttonConnect_Click(object sender, EventArgs e)
@@ -63,7 +81,7 @@ namespace TaskLink10Server
 
         public void buttonLocalIPRefresh_Click(object sender, EventArgs e)
         {
-
+            RefreshLocalIP();
         }
 
         public void buttonIPRemove_Click(object sender, EventArgs e)
@@ -83,7 +101,7 @@ namespace TaskLink10Server
 
         public void buttonIPLoad_Click(object sender, EventArgs e)
         {
-
+            IPLoad();
         }
 
         public void buttonProcKill_Click(object sender, EventArgs e)
@@ -93,7 +111,17 @@ namespace TaskLink10Server
 
         public void buttonLogClear_Click(object sender, EventArgs e)
         {
+            textBoxLog.Text = string.Empty;
+        }
 
+        private void listBoxProc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EnableButtons();
+        }
+
+        private void listBoxIP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EnableButtons();
         }
     }
 }

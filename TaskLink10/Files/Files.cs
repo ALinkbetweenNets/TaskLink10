@@ -12,7 +12,7 @@ namespace TaskLink10Server
         /// <summary>
         /// The File under which the Client IPs get stored
         /// </summary>
-        private const string pathIP = "IPs.tl";
+        private const string pathIP = "IP.tl";
 
         /// <summary>
         /// The File under which the Session Password get stored
@@ -32,6 +32,7 @@ namespace TaskLink10Server
             File.WriteAllLines(pathIP, ipList);
             LogBox("Saved IP List to " + pathIP);
         }
+
         /// <summary>
         /// Loads IP Addresses from IPs.tl, checks them via IPFilter and adds them to listBoxClientIPs
         /// </summary>
@@ -62,5 +63,16 @@ namespace TaskLink10Server
                 LogBox($"Error While Loading IP Addresses from: {pathIP}");
             }
         }
+
+        public void SPSave()
+        {
+
+        }
+
+        public void SPLoad(bool output = true)
+        {
+
+        }
+
     }
 }

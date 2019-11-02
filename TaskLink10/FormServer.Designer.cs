@@ -166,6 +166,7 @@
             this.listBoxProc.Size = new System.Drawing.Size(232, 329);
             this.listBoxProc.Sorted = true;
             this.listBoxProc.TabIndex = 10;
+            this.listBoxProc.SelectedIndexChanged += new System.EventHandler(this.listBoxProc_SelectedIndexChanged);
             // 
             // listBoxIP
             // 
@@ -180,6 +181,7 @@
             this.listBoxIP.Size = new System.Drawing.Size(232, 329);
             this.listBoxIP.Sorted = true;
             this.listBoxIP.TabIndex = 9;
+            this.listBoxIP.SelectedIndexChanged += new System.EventHandler(this.listBoxIP_SelectedIndexChanged);
             // 
             // buttonIPRemove
             // 

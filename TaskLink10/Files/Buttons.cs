@@ -11,19 +11,25 @@ namespace TaskLink10Server
     {
         public void EnableButtons()
         {
+            LogS("ButtonEnableCheck");
+            bool SPSet = SessionPassword.Length > 0;
             try
             {
                 if (listBoxIP.Items.Count > 0
                     && listBoxIP.SelectedItem.ToString().Length > 0)
-                    buttonConnect.Enabled = true;
+                {
+                    buttonIPRemove.Enabled = true;
+                    if (SPSet)
+                        buttonConnect.Enabled = true;
+                }
             }
             catch (Exception ex)
             {
                 Log(ex);
             }
-
-            if (SessionPassword.Length > 0)
-                buttonSPSave.Enabled = true;
+                buttonSPSave.Enabled = SPSet;
+                buttonProcKill.Enabled = listBoxProc.Items.Count > 0 
+                && listBoxProc.SelectedItem.ToString().Length > 0 && SPSet;
 
 
 
