@@ -16,12 +16,15 @@ namespace TaskLink10Server
             buttonIPRemove.Enabled = false;
             buttonIPClear.Enabled = false;
             buttonIPSave.Enabled = false;
+            buttonSPSave.Enabled = false;
         }
 
         public void EnableButtons()
         {
             LogS("ButtonEnableCheck");
             bool SPSet = SessionPassword.Length > 0;
+            if (SPSet)
+                buttonSPSet.Text = "Set new Session Password";
             try
             {
                 if (listBoxIP.Items.Count > 0

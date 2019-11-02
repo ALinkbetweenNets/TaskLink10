@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TaskLink10
+namespace TaskLink10Server
 {
     static class Program
     {

@@ -19,7 +19,6 @@ namespace TaskLink10Server
         /// </summary>
         private const string pathSP = "SP.tl";
 
-
         public void IPSave()
         {
             List<string> ipList = new List<string>();
@@ -30,7 +29,7 @@ namespace TaskLink10Server
             }
             Log("Writing...");
             File.WriteAllLines(pathIP, ipList);
-            LogBox("Saved IP List to " + pathIP);
+            LogBox($"Saved IP List to {pathIP}");
         }
 
         /// <summary>
@@ -51,8 +50,8 @@ namespace TaskLink10Server
                         if (IPFilter(StringCheck(ip)))
                             listBoxIP.Items.Add(ip);
                     }
-                    if(output)
-                    LogBox("Loaded IP Addresses from File");
+                    if (output)
+                        LogBox("Loaded IP Addresses from File");
                 }
                 else if (output)
                     LogBox($"No File under {pathIP}");
@@ -64,15 +63,59 @@ namespace TaskLink10Server
             }
         }
 
+        /// <summary>
+        /// Writes Session Password to File
+        /// </summary>
         public void SPSave()
         {
-
+            try
+            {
+                string[] SPList = new string[1];
+                SPList[0] = SessionPassword;
+                Log("Writing...");
+                File.WriteAllLines(pathSP, SPList);
+                Log("Writing Done");
+                LogBox($"Saved Session Password to {pathSP}");
+            }
+            catch (Exception ex)
+            {
+                Log(ex);
+                LogBox($"Error while trying to save Session Password to {pathSP}");
+            }
         }
 
+        /// <summary>
+        /// Loads Session Password from File
+        /// </summary>
+        /// <param name="output"></param>
         public void SPLoad(bool output = true)
         {
-
+            try
+            {
+                if (File.Exists(pathSP))
+                {
+                    string[] SPFile = File.ReadAllLines(pathSP);
+                    Log("Loaded File:");
+                    foreach (string i in SPFile)
+                    {
+                        string ii = StringCheck(i);
+                        Log(ii);
+                        if (ii.Length > 0)
+                        {
+                            SessionPassword = ii;
+                            Log($"Loaded Session Password (Hash: {SessionPassword}) from {pathSP}");
+                            if (output)
+                                LogBox($"Loaded Session Password (Hash: {SessionPassword}) from {pathSP}");
+                        }
+                    }
+                }
+                else LogS($"No File under {pathSP}");
+            }
+            catch (Exception ex)
+            {
+                Log(ex);
+                LogBox("Error initially loading Session Password");
+            }
         }
-
     }
 }

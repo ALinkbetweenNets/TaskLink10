@@ -16,10 +16,14 @@ namespace TaskLink10Server
         public FormServer()
         {
             InitializeComponent();
+            ButtonDisable();
             GetDateTime();
             RefreshLocalIP();
             IPLoad(false);
-            ButtonDisable();
+            
+            SPLoad(false);
+            EnableButtons();
+            Log($"Encoded IP Filter: {localIPFilter}");
         }
 
         public void buttonSPSet_Click(object sender, EventArgs e)
@@ -37,7 +41,7 @@ namespace TaskLink10Server
                 LogBox("Set new Session Password. SHA-256 Hash:\n" +
                         SessionPassword);
 
-                buttonSPSet.Text = "Set new Session Password";
+                
 
             }
             else
@@ -51,12 +55,21 @@ namespace TaskLink10Server
 
         public void buttonSPSave_Click(object sender, EventArgs e)
         {
-            SPSave();
+            if (SessionPassword.Length > 0)
+            {
+                if (ConfirmationBox(
+                    "By Saving the Session Password, it will be loaded automatically at startup. Do you want to save it now?"
+                    ,"Save Session Password"))
+                {
+                    SPSave();
+                }
+            }
+            else LogBox();
         }
 
         public void buttonIPAdd_Click(object sender, EventArgs e)
         {
-        IPAdd:
+            IPAdd:
             string enteredAddress = StringCheck(InputBox(
                 "Enter new IPv4 Address of a Client Computer (eg. 192.168.1.5)",
                 "New Client IP"));
@@ -66,12 +79,8 @@ namespace TaskLink10Server
                 {
                     listBoxIP.Items.Add(enteredAddress);
                 }
-                else if (ConfirmationBox("Invalid IPv4 Formatting. Retry?", "Invalid IPv4 Format"))
+                else if (ConfirmationBox("Invalid IPv4 Formatting. Retry?", "Invalid Format"))
                     goto IPAdd;
-            }
-            else
-            {
-                LogBox("You have to enter an IP Address in the IPv4 Format");
             }
         }
 

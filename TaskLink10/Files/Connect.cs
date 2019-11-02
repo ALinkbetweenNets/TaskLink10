@@ -29,9 +29,10 @@ namespace TaskLink10Server
             {
                 if (IPFilter(StringCheck(address)))
                 {
-                    IPAddress ipaddress = IPAddress.Parse(address);
+                    
                     try
                     {
+                        IPAddress ipaddress = IPAddress.Parse(address);
                         using (TcpClient tcpClient = new TcpClient())
                         {
                             LogS($"Connecting to {address};{port}. Type:{type}, Content:{content}...");

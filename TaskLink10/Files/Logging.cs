@@ -89,11 +89,8 @@ namespace TaskLink10Server
         {
             try
             {
-            Input:
                 string Input = StringCheck(Microsoft.VisualBasic.Interaction.InputBox(text,
                            title, EnteredText, 0, 0));
-                if (Input.Length == 0)
-                    goto Input;
 
                 LogS($"Input Box: { title} : {text} -> {Input}");
                 return Input;

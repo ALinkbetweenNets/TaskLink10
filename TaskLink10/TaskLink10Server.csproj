@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TaskLink10.Program</StartupObject>
+    <StartupObject>TaskLink10Server.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>TL.ico</ApplicationIcon>
