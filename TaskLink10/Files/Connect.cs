@@ -29,7 +29,7 @@ namespace TaskLink10Server
             {
                 if (IPFilter(StringCheck(address)))
                 {
-                    
+
                     try
                     {
                         IPAddress ipaddress = IPAddress.Parse(address);
@@ -45,6 +45,7 @@ namespace TaskLink10Server
 
                             /* Server
                              *      Client
+                             *      
                              * LINK  4
                              * 4    LINK
                              * 
