@@ -88,7 +88,14 @@ namespace TaskLink10Server
         {
             try
             {
-                await ConnectAsync(listBoxIP.SelectedItem.ToString());
+                string[] proc = 
+                    (await ConnectAsync(listBoxIP.SelectedItem.ToString())).Split(';');
+                foreach(string s in proc)
+                {
+                    if (s.Contains("*"))
+                        listBoxProc.Items.Add(s.);
+                }
+
             }
             catch (Exception ex)
             { Log(ex); }

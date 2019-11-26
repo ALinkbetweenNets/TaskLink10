@@ -68,6 +68,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Files\Buttons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\Collector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\Connect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\Encryption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\Files.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\IP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\Logging.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\Processes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Files\StringConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
