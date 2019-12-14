@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TaskLink10Server
+namespace TaskLink10Client
 {
-    public partial class FormServer : Form
-    {
+    public partial class FormClient
+    { 
         /// <summary>
         /// Session password used for Communication. Should never be clear text (-> use SHA-256).
         /// Must be equal on all devices

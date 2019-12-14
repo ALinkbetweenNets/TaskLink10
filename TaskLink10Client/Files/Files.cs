@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskLink10Server
+namespace TaskLink10Client
 {
-    public partial class FormServer
+    public partial class FormClient
     {
         /// <summary>
         /// The File under which the Client IPs get stored

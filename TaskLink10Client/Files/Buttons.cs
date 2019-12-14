@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TaskLink10Server
+namespace TaskLink10Client
 {
     public partial class FormServer : Form
     {
